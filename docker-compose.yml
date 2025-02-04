@@ -1,6 +1,6 @@
 services:
   static-server:
-    build: ./docker
+    build: .
     container_name: static-server
     ports:
       - "14000:22"
