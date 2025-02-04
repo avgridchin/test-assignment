@@ -1,0 +1,9 @@
+services:
+  static-server:
+    build: ./docker
+    container_name: static-server
+    ports:
+      - "2222:22"
+      - "8080:80"
+    volumes:
+      - ./ansible:/ansible
