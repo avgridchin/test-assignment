@@ -1,0 +1,10 @@
+- name: Download static files
+  get_url:
+    url: "https://drive.google.com/uc?export=download&id=1L9hsq9ZFB5VbXYJ3kEKH479nhxxZEnI"
+    dest: /var/www/static/images.zip
+
+- name: Unzip static files
+  unarchive:
+    src: /var/www/static/images.zip
+    dest: /var/www/static
+    remote_src: yes
