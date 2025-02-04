@@ -1,0 +1,28 @@
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Configure Nginx
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/static
+  notify: Restart Nginx
+
+- name: Enable Nginx configuration
+  file:
+    src: /etc/nginx/sites-available/static
+    dest: /etc/nginx/sites-enabled/static
+    state: link
+
+- name: Ensure Nginx is running
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+  handlers:
+  - name: Restart Nginx
+    service:
+      name: nginx
+      state: restarted
