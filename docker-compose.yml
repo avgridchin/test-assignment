@@ -3,7 +3,7 @@ services:
     build: .
     container_name: static-server
     ports:
-      - "14000:22"
+      - "2222:22"
       - "8080:80"
     volumes:
       - ./ansible:/ansible
