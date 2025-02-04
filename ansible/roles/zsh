@@ -1,0 +1,12 @@
+- name: Install zsh
+  apt:
+    name: zsh
+    state: present
+
+- name: Install oh-my-zsh for users
+  shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  args:
+    chdir: "/home/{{ item.name }}"
+  loop: "{{ users }}"
+  when: item.shell == '/bin/zsh'

@@ -1,0 +1,9 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install additional packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ packages }}"
